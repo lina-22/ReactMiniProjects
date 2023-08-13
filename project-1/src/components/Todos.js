@@ -10,7 +10,12 @@ export default function Todos(props) {
       <section className={style.todos}>
         <article>
           {todos.map((todo) => (
-            <Todo key={todo.id} todo={todo} />
+            <Todo
+              key={todo.id}
+              todo={todo.todo}
+              id={todo.id}
+              onRemoveItem={props.onRemoveTodo}
+            />
           ))}
         </article>
       </section>

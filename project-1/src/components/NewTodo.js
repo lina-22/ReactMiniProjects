@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import style from "./newtodo.module.css";
 
-export default function NewTodo() {
+export default function NewTodo(props) {
   const [todo, setTodo] = useState({ title: "", desc: "" });
   const { title, desc } = todo;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(todo);
+    props.onAddTodo(todo);
     setTodo({ title: "", desc: "" });
   };
 
