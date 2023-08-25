@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import { UsersContext } from "../context/UsersContext";
+import React, { useState } from "react";
+import { useUsersContext } from "../hooks/useUsersContext";
 
 const NewUser = () => {
-  const { setUsers } = useContext(UsersContext);
+  const { setUsers } = useUsersContext();
   const [name, setName] = useState("");
 
   const changeHander = (e) => {
