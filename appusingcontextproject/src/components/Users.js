@@ -1,17 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import User from "./User";
+import { UsersContext } from "../context/UsersContext";
 
-const Users = ({ appusers, handleDeleteUserPassFrmApp }) => {
+const Users = () => {
+  const { users } = useContext(UsersContext);
   return (
     <section className="usersapp">
-      {appusers &&
-        appusers.map((user) => (
-          <User
-            key={user.id}
-            user={user}
-            handleDeleteUserPassFromUsers={handleDeleteUserPassFrmApp}
-          />
-        ))}
+      {users && users.map((user) => <User key={user.id} user={user} />)}
     </section>
   );
 };

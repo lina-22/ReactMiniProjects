@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import Users from "./Users";
-import { UsersContext } from "../context/UsersContext";
 
-const User = ({ user }) => {
-  const { users, setUsers } = useContext(UsersContext);
+const User = ({ user, handleDeleteUserPassFromUsers }) => {
   const { id, username } = user;
+
   const handleDelete = (id) => {
     // console.log(id);
-    const filterUsers = users.filter((user) => user.id !== id);
-    setUsers(filterUsers);
+    handleDeleteUserPassFromUsers(id);
   };
   return (
     <article className="user">
