@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useUsersContext } from "../hooks/useUsersContext";
 
 const NewUser = () => {
-  const { addUser } = useUsersContext();
+  const { state, dispatch } = useUsersContext();
   const [name, setName] = useState("");
 
   const changeHander = (e) => {
@@ -13,7 +13,8 @@ const NewUser = () => {
     e.preventDefault();
     const newUser = { id: new Date().getTime().toString(), username: name };
     // console.log(newUser)
-    addUser(newUser);
+    dispatch({ type: "ADD_USER", payload: newUser });
+    setName("");
   };
   return (
     <div>

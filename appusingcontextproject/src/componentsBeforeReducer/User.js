@@ -2,10 +2,12 @@ import React from "react";
 import { useUsersContext } from "../hooks/useUsersContext";
 
 const User = ({ user }) => {
-  const { deleteUser } = useUsersContext();
+  const { users, setUsers } = useUsersContext();
   const { id, username } = user;
   const handleDelete = (id) => {
-    deleteUser(id);
+    // console.log(id);
+    const filterUsers = users.filter((user) => user.id !== id);
+    setUsers(filterUsers);
   };
   return (
     <article className="user">

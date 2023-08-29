@@ -1,16 +1,21 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer } from "react";
+import { initialState, reducer } from "../reducer/usersReducer";
 
 export const UsersContext = createContext({});
 
 const UsersProvider = ({ children }) => {
-  const [users, setUsers] = useState([
-    { id: 1, username: "Mark" },
-    { id: 2, username: "John" },
-  ]);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const value = {
+    users: state.users,
+    addUser: (newUser) => {
+      dispatch({ type: "ADD_USER", payload: newUser });
+    },
+    deleteUser: (id) => {
+      dispatch({ type: "DELETE_USER", payload: id });
+    },
+  };
   return (
-    <UsersContext.Provider value={{ users, setUsers }}>
-      {children}
-    </UsersContext.Provider>
+    <UsersContext.Provider value={value}>{children}</UsersContext.Provider>
   );
 };
 

@@ -2,10 +2,10 @@ import React from "react";
 import { useUsersContext } from "../hooks/useUsersContext";
 
 const User = ({ user }) => {
-  const { deleteUser } = useUsersContext();
+  const { state, dispatch } = useUsersContext();
   const { id, username } = user;
   const handleDelete = (id) => {
-    deleteUser(id);
+    dispatch({ type: "DELETE_USER", payload: id });
   };
   return (
     <article className="user">
